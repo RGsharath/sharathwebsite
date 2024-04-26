@@ -613,7 +613,7 @@
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <p class="mb-4"> 😊 It means a lot that you took the time to reach out and establish a connection with me. Your interest in connecting has made me feel valued and appreciated. I'm looking forward to getting to know you better and exploring the possibilities of our connection.✨</p>
-                    <form method="post" autocomplete="off" name="google-sheet">
+                    <form method="post" autocomplete="on" name="google-sheet">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
@@ -648,32 +648,33 @@
             </div>
         </div>
     </div>  
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbx-aSc0K5_zzHMfOFcmuQWTnCn81ZRgaVfqK-s_wjbYMh6nvrm1u2w5lrFv0ndCffiN1g/exec';
-  const form = document.forms['google-sheet'];
-  const submitButton = form.querySelector('button[type="submit"]');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    // Disable the submit button to prevent multiple submissions
-    submitButton.disabled = true;
-
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-        alert("Thanks for Contacting Me..! I Will Contact You Soon...");
-        // Reset the form after successful submission
-        form.reset();
-        // Re-enable the submit button after form reset
-        submitButton.disabled = false;
-      })
-      .catch(error => {
-        console.error('Error!', error.message);
-        // Re-enable the submit button on error
-        submitButton.disabled = false;
-      });
-  });
-</script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx-aSc0K5_zzHMfOFcmuQWTnCn81ZRgaVfqK-s_wjbYMh6nvrm1u2w5lrFv0ndCffiN1g/exec';
+        const form = document.forms['google-sheet'];
+        const submitButton = form.querySelector('button[type="submit"]');
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+      
+          // Disable the submit button to prevent multiple submissions
+          submitButton.disabled = true;
+      
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+              alert("Thanks for Contacting Me..! I Will Contact You Soon...");
+              // Reset the form after successful submission
+              form.reset();
+              // Re-enable the submit button after form reset
+              submitButton.disabled = false;
+            })
+            .catch(error => {
+              console.error('Error!', error.message);
+              // Re-enable the submit button on error
+              submitButton.disabled = false;
+            });
+        });
+      </script>
+      
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
