@@ -648,17 +648,32 @@
             </div>
         </div>
     </div>  
-      <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbx-aSc0K5_zzHMfOFcmuQWTnCn81ZRgaVfqK-s_wjbYMh6nvrm1u2w5lrFv0ndCffiN1g/exec'
-        const form = document.forms['google-sheet']
-      
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => alert("Thanks for Contacting Me..! I Will Contact You Soon..."))
-            .catch(error => console.error('Error!', error.message))
-        })
-      </script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbx-aSc0K5_zzHMfOFcmuQWTnCn81ZRgaVfqK-s_wjbYMh6nvrm1u2w5lrFv0ndCffiN1g/exec';
+  const form = document.forms['google-sheet'];
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Disable the submit button to prevent multiple submissions
+    submitButton.disabled = true;
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        alert("Thanks for Contacting Me..! I Will Contact You Soon...");
+        // Reset the form after successful submission
+        form.reset();
+        // Re-enable the submit button after form reset
+        submitButton.disabled = false;
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        // Re-enable the submit button on error
+        submitButton.disabled = false;
+      });
+  });
+</script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
